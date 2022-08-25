@@ -38,9 +38,11 @@ const SignupForm = () => {
       const { data } = await addUser({
         variables: { ...userFormData },
       });
+
       Auth.login(data.addUser.token);
+
     } catch (err) {
-      console.error(error);
+      console.error(err);
       setShowAlert(true);
     }
 
@@ -123,6 +125,7 @@ const SignupForm = () => {
           Submit
         </Button>
       </Form>
+      {error && <div>Login failed</div>}
     </>
   );
 };
